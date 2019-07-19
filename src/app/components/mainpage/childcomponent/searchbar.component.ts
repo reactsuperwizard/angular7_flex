@@ -67,7 +67,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styles: [`
     /*globe sb bold*/
     h3 {
-      font-family: sans-serif;
+      font-family : 'Didact Gothic';
       font-size: 1.8em;
     }
     .mainpage-full-width {

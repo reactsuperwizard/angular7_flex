@@ -12,6 +12,9 @@ import { DetailItemComponent } from './components/mainpage/detailitem.component'
 import { MainPageComponent } from './components/mainpage/mainpage.component';
 import { SearchBarComponent } from './components/mainpage/childcomponent/searchbar.component';
 import { SearchResultComponent } from './components/mainpage/childcomponent/searchresult.component';
+import { DetailDialogComponent } from './components/mainpage/childcomponent/detaildialog.component'
+import { SubDetailPanComponent } from './components/mainpage/childcomponent/subdetailpan.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,9 @@ import { SearchResultComponent } from './components/mainpage/childcomponent/sear
     DetailItemComponent,
     MainPageComponent,
     SearchBarComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    DetailDialogComponent,
+    SubDetailPanComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,9 @@ import { SearchResultComponent } from './components/mainpage/childcomponent/sear
     MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    DetailDialogComponent
+  ]
 })
 export class AppModule { }

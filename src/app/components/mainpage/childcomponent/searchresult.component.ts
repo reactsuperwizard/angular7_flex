@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
@@ -25,7 +25,7 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              <td mat-cell *matCellDef="let element" (click)="onDetailClick(element)"> {{element.name}} </td>
             </ng-container>
         
             <!-- busNo Column -->
@@ -160,6 +160,15 @@ export class SearchResultComponent implements OnInit {
   displayedColumns: string[] = [ 'seq', 'busNo', 'busDate', 'name', 'stf', 'iDNo', 'nationality', 'seat', 'grpCode', 'pNR_Date', 'checkin', 'dateTime', ];
   dataSource = new MatTableDataSource<TravelBusElement>(ELEMENT_DATA);
 
+  @Output()
+  openDialog = new EventEmitter();
+
+  onDetailClick(data) {
+    console.log(data);
+    this.openDialog.emit(data);
+  }
+  
+  
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit() {
