@@ -78,7 +78,7 @@ import {MatTableDataSource} from '@angular/material/table';
     }
 
     .mainpage-card {
-      min-width: 600px;
+      min-width: 950px;
       padding: 0px;
       background: #f5f2ed;
     }
