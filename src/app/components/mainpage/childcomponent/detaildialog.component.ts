@@ -9,10 +9,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
           
     <div mat-dialog-title class="dialog-title">
       <p class="dialog-title-p">Passenger: {{data.name}}</p>
-      <button class="dialog-title-button" mat-icon-button aria-label="Example"><i class="material-icons">cancel</i></button>
+      <button class="dialog-title-button" mat-icon-button aria-label="Close windows" (click)="onCloseClick()"><i class="material-icons">cancel</i></button>
     </div>
     <div mat-dialog-content class="dialgo-content">      
-      <app-detail-pan [information]='busInformation'></app-detail-pan>
+      <app-detail-pan [isCardBlock]='true' [information]='busInformation' class="busInfo"></app-detail-pan>
       <mat-tab-group>
         <mat-tab *ngFor="let tab of tabInformation" label="{{tab.tabname}}">                             
           <div *ngIf="tab?.tabInfo && tab.tabInfo.length>0">          
@@ -24,18 +24,21 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
     
   `,
   styles: [`
-    .common-info {
-
+  :host {
+    font-family : 'Didact Gothic';
+  }   
+    .busInfo {
+      background: #f5f2ed;
     }
     .dialog-title {
-      margin: -24px -24px 0px -24px;
-      padding: 12px 8px 10px 24px;
+      margin: -32px -24px -4px -24px;
+      padding: 12px 8px 1px 24px;
       background: #887972;
-      color : #ffffff;
+      color : #ffffff;      
     }
     .dialog-title>p {
       display: inline;      
-      font-family : 'Didact Gothic';
+      
     }
     .dialog-title>button {
       float: right;
@@ -46,6 +49,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
       border: 4px #887972 solid;
       min-height: 200px;
       margin-bottom: -24px;
+      padding-top: 15px;
+      
     }
   `]
 })
@@ -62,14 +67,14 @@ export class DetailDialogComponent{
         {name:'Bus No', value: '01'},
         {name:'Seat No', value: '35k'}
       ],
-      width:45    
+      width:35    
     },
     {
       data:[
         {name:'Bus Date', value: '17/06/2013'},
         {name:'Record Locator', value: ''}
       ],
-      width:35    
+      width:40    
     },
     {
       data:[
@@ -163,7 +168,7 @@ constructor(
   public dialogRef: MatDialogRef<DetailDialogComponent>,
   @Inject(MAT_DIALOG_DATA) public data: TravelBusElement) {}
 
-onNoClick(): void {
+onCloseClick(): void {
   this.dialogRef.close();
 }
 

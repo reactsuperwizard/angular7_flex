@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-mainlayout',
   template: `
   <div style="height: 100vh;">
-    <mat-toolbar color="primary">
+    <mat-toolbar>
       <mat-toolbar-row>
         <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
           <mat-icon>menu</mat-icon>
@@ -48,6 +48,10 @@ import { Component, OnInit } from '@angular/core';
     
   .example-spacer {
     flex: 1 1 auto;
+  }
+  .mat-toolbar-row{
+    background: linear-gradient(#e8e8e8 21%, transparent);
+    border-bottom: 1px #9c9c9c solid;
   }
 
   `]
