@@ -9,8 +9,7 @@ export class AuthService {
   constructor(private router: Router) { }
 
   public isLogin() {
-    console.log(this.router.url);
-    if (this.router.url == 'login') return false;
+    if (this.router.url == '/login') return false;
     return true;
 
   }

@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-mainlayout',
   template: `
   <div style="height: 100vh;">
     <mat-toolbar>
-      <mat-toolbar-row>
-        <mat-card>
-          <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-            <mat-icon>menu</mat-icon>
-          </button>
-          <span>Title</span>
-          <span class="example-spacer"></span>
-          <div fxShow="true" fxHide.lt-md="true">
-          <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-            <span>Welcome,{{username}}</span> |
-            <span>{{cur_date}}</span> |
-            <a href="#" mat-button>
-              Logout
-            </a>
-          </div>
-        </mat-card>
+      <mat-toolbar-row [class.mat-elevation-z2]="true">
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Title</span>
+        <span class="example-spacer"></span>
+        <div fxShow="true" fxHide.lt-md="true" *ngIf="isLogin()">
+          <span >Welcome,{{username}}</span> |
+          <span>{{cur_date}}</span> |
+          <a href="#" mat-button>
+            Logout
+          </a>
+        </div>
       </mat-toolbar-row>
     </mat-toolbar>
 
     <mat-sidenav-container fxFlexFill>
       <mat-sidenav #sidenav>
-        <mat-nav-list>
+        <mat-nav-list *ngIf="isLogin()">
           <div mat-list-item>Welcome,{{username}}</div>
           <div mat-list-item>{{cur_date}}</div>
           <a href="#" mat-list-item>
@@ -44,6 +43,10 @@ import { Component, OnInit } from '@angular/core';
   </div>
   `,
   styles: [`
+  .mat-toolbar {
+    position: relative;
+  }
+  
   .example-icon {
     padding: 0 0;
   }
@@ -53,17 +56,22 @@ import { Component, OnInit } from '@angular/core';
   }
   .mat-toolbar-row{
     background: linear-gradient(#e8e8e8 21%, transparent);
-    border-bottom: 1px #9c9c9c solid;
+    padding: 16px;
+    margin-bottom: 16px;
   }
-
   `]
 })
 export class MainComponent implements OnInit {
-  username = 'user'
-  cur_date = '15-Mar-2019'
-  constructor() { }
 
+  username = 'user';
+  cur_date = '15-Mar-2019';
+
+  constructor(private router: Router, private auth:AuthService) { }
+    
   ngOnInit() {
+  }
+  isLogin() {
+    return this.auth.isLogin();
   }
 
 }

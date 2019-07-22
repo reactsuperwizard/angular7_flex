@@ -74,8 +74,7 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
             <ng-container matColumnDef="pNR_Date">
               <th mat-header-cell *matHeaderCellDef> PNR Date </th>
               <td mat-cell *matCellDef="let element"> {{element.pNR_Date}} </td>
-            </ng-container>
-            
+            </ng-container>            
             <!-- checkin Column -->
             <ng-container matColumnDef="checkin">
               <th mat-header-cell *matHeaderCellDef> Check In </th>
