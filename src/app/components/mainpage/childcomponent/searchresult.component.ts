@@ -25,7 +25,7 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element" (click)="onDetailClick(element)"> {{element.name}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
         
             <!-- busNo Column -->
@@ -89,7 +89,7 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
             </ng-container>
         
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onDetailClick(element)"></tr>
           </table>          
           <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons class="mainpage-paginator"></mat-paginator>
         </div>

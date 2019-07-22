@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -52,7 +53,7 @@ import { FormGroup, FormControl } from '@angular/forms';
           {{ error }}
         </p>
         <div class="button">
-          <button type="submit" mat-raised-button [disabled]="!formGroup.valid">Login</button>
+          <button type="submit" mat-raised-button [disabled]="!formGroup.valid" (click)="login()">Login</button>
         </div>
       </form>
     </div>
@@ -122,7 +123,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
   formGroup: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -154,6 +155,9 @@ export class LoginComponent implements OnInit {
       default:
         return '';
     }
+  }
+  login() {
+    this._router.navigate(['home']);
   }
 
 }

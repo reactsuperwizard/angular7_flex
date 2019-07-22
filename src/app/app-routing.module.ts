@@ -7,7 +7,7 @@ const routes: Routes = [
   {path: 'home', component:MainPageComponent, data: {title: 'Home'}},
   {path: 'login', component:LoginComponent},
   // default redirect
-  {path: '**', redirectTo: '/home'}
+  {path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({

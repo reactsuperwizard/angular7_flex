@@ -6,19 +6,21 @@ import { Component, OnInit } from '@angular/core';
   <div style="height: 100vh;">
     <mat-toolbar>
       <mat-toolbar-row>
-        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>Title</span>
-        <span class="example-spacer"></span>
-        <div fxShow="true" fxHide.lt-md="true">
-        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-          <span>Welcome,{{username}}</span> |
-          <span>{{cur_date}}</span> |
-          <a href="#" mat-button>
-            Logout
-          </a>
-        </div>
+        <mat-card>
+          <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>Title</span>
+          <span class="example-spacer"></span>
+          <div fxShow="true" fxHide.lt-md="true">
+          <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+            <span>Welcome,{{username}}</span> |
+            <span>{{cur_date}}</span> |
+            <a href="#" mat-button>
+              Logout
+            </a>
+          </div>
+        </mat-card>
       </mat-toolbar-row>
     </mat-toolbar>
 
