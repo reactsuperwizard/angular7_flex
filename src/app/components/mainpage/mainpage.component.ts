@@ -30,7 +30,12 @@ export class MainPageComponent implements OnInit {
     
     const dialogRef = this.dialog.open(DetailDialogComponent, {
       width: '800px',
-      data: this.sel_bus
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+      data: {
+        info:this.sel_bus,
+        dlg: this.dialog
+      }
     });
 
     // dialogRef.afterClosed().subscribe(result => {

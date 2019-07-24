@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -14,48 +15,50 @@ import {MatTableDataSource} from '@angular/material/table';
         <mat-card-title class="mainpage-title"> Search </mat-card-title>
       </mat-card-header>    
       <mat-card-content class="mainpage-card-content">
-        <div fxFlex="28">
-          <div>
-            <mat-form-field class="mainpage-full-width">
-              <input matInput placeholder="Name">
-            </mat-form-field>
+        <form [formGroup]="schFrm">
+          <div fxFlex="28">
+            <div>
+              <mat-form-field class="mainpage-full-width">
+                <input matInput placeholder="Name" formControlName="name">
+              </mat-form-field>
+            </div>
           </div>
-        </div>
-        <div fxFlex="18">
-          <div class="mainpage-90-width">
-            <mat-form-field class="mainpage-full-width">
-              <input matInput placeholder="Bus No">
-            </mat-form-field>
+          <div fxFlex="18">
+            <div class="mainpage-90-width">
+              <mat-form-field class="mainpage-full-width">
+                <input matInput placeholder="Bus No" formControlName="busno">
+              </mat-form-field>
+            </div>
           </div>
-        </div>
-        <div fxFlex="18">
-          <div class="mainpage-90-width">
-            <mat-form-field class="mainpage-full-width">
-              <input matInput [matDatepicker]="picker" placeholder="Bus Date">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>          
+          <div fxFlex="18">
+            <div class="mainpage-90-width">
+              <mat-form-field class="mainpage-full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Bus Date" formControlName="busdate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>          
+            </div>
           </div>
-        </div>
-        <div fxFlex="18">
-          <div class="mainpage-90-width">
-            <mat-form-field class="mainpage-full-width">
-              <input matInput placeholder="Departure">
-            </mat-form-field>
+          <div fxFlex="18">
+            <div class="mainpage-90-width">
+              <mat-form-field class="mainpage-full-width">
+                <input matInput placeholder="Departure" formControlName="departure">
+              </mat-form-field>
+            </div>
           </div>
-        </div>
-        <div fxFlex="18">
-          <div class="mainpage-90-width">
-            <mat-form-field class="mainpage-full-width">
-              <input matInput placeholder="Arrival">
-            </mat-form-field>
+          <div fxFlex="18">
+            <div class="mainpage-90-width">
+              <mat-form-field class="mainpage-full-width">
+                <input matInput placeholder="Arrival" formControlName="arrival">
+              </mat-form-field>
+            </div>
           </div>
-        </div>
+        </form>
       </mat-card-content>
       <mat-card-actions class="mainpage-card-actions">
         <div fxFlex></div>
         <div fxFlex="200px">
-          <button mat-raised-button>Reset</button>
+          <button mat-raised-button (click)="resetClick()">Reset</button>
           <button mat-raised-button>Show Pax</button>
         </div>
       </mat-card-actions>
@@ -108,8 +111,21 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class SearchBarComponent implements OnInit {
 
+  schFrm = new FormGroup({
+    name: new FormControl(''),
+    busno: new FormControl(''),
+    busdate: new FormControl(''),
+    departure: new FormControl(''),
+    arrival: new FormControl(''),
+  });
+
   ngOnInit() {
-  }  
-  
+
+  }
+
+  resetClick() {
+    this.schFrm.setValue({ name: '', busno: '', busdate: '', departure: '', arrival: '' });
+  }
+
 
 }
