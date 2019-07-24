@@ -14,8 +14,7 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
       </mat-card-header>    
       <mat-card-content class="mainpage-card-content">
         <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource">
-        
+          <table mat-table [dataSource]="dataSource">        
             <!-- seq Column -->
             <ng-container matColumnDef="seq">
               <th mat-header-cell *matHeaderCellDef> # </th>
@@ -99,7 +98,7 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
   
   `,
   styles: [`
-  
+    
     .mainpage-full-width {
       width: 100%;
     }
@@ -148,6 +147,9 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
 
     .mat-row:nth-child(odd){
       background-color:#ffffff;
+    }
+    .mat-row:hover {
+      background-color: #fdfcd6;
     }
     
   `]

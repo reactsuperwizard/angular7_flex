@@ -11,8 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
         <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
           <mat-icon>menu</mat-icon>
         </button>
-        <div class="header-image" mat-card-avatar>          
-        </div>
+        
         <span class="example-spacer"></span>
         <div class="toolbar-css" fxShow="true" fxHide.lt-md="true" *ngIf="isLogin()">
           <span >Welcome, {{username}}</span> |
@@ -20,6 +19,8 @@ import { AuthService } from 'src/app/services/auth.service';
           <a href="#" mat-button>
             Logout
           </a>
+        </div>
+        <div class="header-image" mat-card-avatar>          
         </div>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -51,10 +52,10 @@ import { AuthService } from 'src/app/services/auth.service';
   }
 
   .header-image {    
-    background-image: url('/assets/logo.jpg');
+    background-image: url(/assets/logo.jpg);
     background-size: cover;
-    position: absolute;
-    margin-left:60px;
+    float: right;
+    margin-right: 60px;
   }
   
   .mat-toolbar {
