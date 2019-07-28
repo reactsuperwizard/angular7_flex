@@ -57,28 +57,27 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class DetailDialogComponent{
   
   
-  
   busInformation:any = {
     title:'Bus Details',
     icon: 'pan_tool',
     detail:[
     {
       data:[
-        {name:'Bus No', value: '01'},
-        {name:'Seat No', value: '35k'}
+        {name:'Bus No', value: this.data.busNo},
+        {name:'Seat No', value: this.data.seat}
       ],
       width:35    
     },
     {
       data:[
-        {name:'Bus Date', value: '17/06/2013'},
+        {name:'Bus Date', value: this.data.busDate},
         {name:'Record Locator', value: ''}
       ],
       width:40    
     },
     {
       data:[
-        {name:'Departure', value: '01'},
+        {name:'Departure', value: 'asdf'},
         {name:'Arrival', value: '35k'}
       ],
       width:30    
@@ -92,10 +91,10 @@ tabInformation:any = [{
         icon: 'person',
         detail:[{
           data:[
-            {name:'Passenger Name', value: 'Mohamed Bahaa eldin Mohamed'},
+            {name:'Passenger Name', value: this.data.name},
             {name:'Infant Name', value: 'N/A'},
-            {name:'Seat No', value: '35K'},
-            {name:'Group Code', value: '5fs6'},
+            {name:'Seat No', value: this.data.seat},
+            {name:'Group Code', value: this.data.grpCode},
           ],
           width:50
           },

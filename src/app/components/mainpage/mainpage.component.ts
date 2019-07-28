@@ -32,12 +32,8 @@ export class MainPageComponent implements OnInit {
       width: '800px',
       maxHeight: '100vh',
       maxWidth: '100vw',
-      data: {
-        info:this.sel_bus,
-        dlg: this.dialog
-      }
+      data: this.sel_bus        
     });
-
     // dialogRef.afterClosed().subscribe(result => {
     //   console.log('The dialog was closed');
     // });
