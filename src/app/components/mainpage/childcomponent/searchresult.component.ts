@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, Output, EventEmitter} from '@angular/core'
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
+import { MatSort } from '@angular/material';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
       </mat-card-header>    
       <mat-card-content class="mainpage-card-content">
         <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource">        
+          <table mat-table [dataSource]="dataSource" matSort>        
             <!-- seq Column -->
             <ng-container matColumnDef="seq">
               <th mat-header-cell *matHeaderCellDef> # </th>
@@ -23,66 +24,66 @@ import { ELEMENT_DATA, TravelBusElement } from 'src/app/data/Order.type';
         
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
               <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
         
             <!-- busNo Column -->
             <ng-container matColumnDef="busNo">
-              <th mat-header-cell *matHeaderCellDef> Bus No </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Bus No </th>
               <td mat-cell *matCellDef="let element"> {{element.busNo}} </td>
             </ng-container>
         
             <!-- busDate Column -->
             <ng-container matColumnDef="busDate">
-              <th mat-header-cell *matHeaderCellDef> Bus Date </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Bus Date </th>
               <td mat-cell *matCellDef="let element"> {{element.busDate}} </td>
             </ng-container>
             
             <!-- stf Column -->
             <ng-container matColumnDef="stf">
-              <th mat-header-cell *matHeaderCellDef> STF </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> STF </th>
               <td mat-cell *matCellDef="let element"> {{element.stf}} </td>
             </ng-container>
             
             <!-- iDNo Column -->
             <ng-container matColumnDef="iDNo">
-              <th mat-header-cell *matHeaderCellDef> ID No </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID No </th>
               <td mat-cell *matCellDef="let element"> {{element.iDNo}} </td>
             </ng-container>
             
             <!-- nationality Column -->
             <ng-container matColumnDef="nationality">
-              <th mat-header-cell *matHeaderCellDef> Nationality </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nationality </th>
               <td mat-cell *matCellDef="let element"> {{element.nationality}} </td>
             </ng-container>
             
             <!-- seat Column -->
             <ng-container matColumnDef="seat">
-              <th mat-header-cell *matHeaderCellDef> Seat </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Seat </th>
               <td mat-cell *matCellDef="let element"> {{element.seat}} </td>
             </ng-container>
             
             <!-- grpCode Column -->
             <ng-container matColumnDef="grpCode">
-              <th mat-header-cell *matHeaderCellDef> Grp Code </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Grp Code </th>
               <td mat-cell *matCellDef="let element"> {{element.grpCode}} </td>
             </ng-container>
             
             <!-- pNR_Date Column -->
             <ng-container matColumnDef="pNR_Date">
-              <th mat-header-cell *matHeaderCellDef> PNR Date </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> PNR Date </th>
               <td mat-cell *matCellDef="let element"> {{element.pNR_Date}} </td>
             </ng-container>            
             <!-- checkin Column -->
             <ng-container matColumnDef="checkin">
-              <th mat-header-cell *matHeaderCellDef> Check In </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Check In </th>
               <td mat-cell *matCellDef="let element"> {{element.checkin}} </td>
             </ng-container>
             
             <!-- dateTime Column -->
             <ng-container matColumnDef="dateTime">
-              <th mat-header-cell *matHeaderCellDef> Date Time </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Time </th>
               <td mat-cell *matCellDef="let element"> {{element.dateTime}} </td>
             </ng-container>
         
@@ -169,11 +170,12 @@ export class SearchResultComponent implements OnInit {
     this.openDialog.emit(data);
   }
   
-  
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }  
 
 }
