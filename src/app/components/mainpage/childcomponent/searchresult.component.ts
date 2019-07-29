@@ -18,7 +18,7 @@ import { MatSort } from '@angular/material';
           <table mat-table [dataSource]="dataSource" matSort>        
             <!-- seq Column -->
             <ng-container matColumnDef="seq">
-              <th mat-header-cell *matHeaderCellDef> # </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
               <td mat-cell *matCellDef="let element"> {{element.seq}} </td>
             </ng-container>
         
